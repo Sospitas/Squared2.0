@@ -18,8 +18,10 @@ public class PlayerController : MonoBehaviour
 	// Use this for initialization
 	void Awake ()
 	{
+		// Set collision for ground checks and player to be ignored
 		Physics2D.IgnoreLayerCollision(8, 9, true);
-		Physics2D.IgnoreLayerCollision(9, 8, true);
+		// Set collision for ground checks and level trigger to be ignored
+		Physics2D.IgnoreLayerCollision(9, 10, true);
 		
 		rigidBody = GetComponent<Rigidbody2D>();
 	}
@@ -32,6 +34,8 @@ public class PlayerController : MonoBehaviour
 	
 	void FixedUpdate()
 	{
+// 		Debug.Log("IsGrounded? " + isGrounded);
+		
 		if(flipGravity && isGrounded)
 		{
 			flipGravity = false;
@@ -51,7 +55,8 @@ public class PlayerController : MonoBehaviour
 	{
 		if(Input.GetKeyDown(KeyCode.Space))
 		{
-			flipGravity = true;
+			if(isGrounded)
+				flipGravity = true;
 		}
 		
 		if(Input.GetKey(KeyCode.D))

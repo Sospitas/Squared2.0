@@ -32,7 +32,7 @@ public class LevelBounds : MonoBehaviour
 	{
 		if(other.tag == "Player")
 		{
-			Debug.Log("Left Trigger");
+// 			Debug.Log("Left Trigger");
 			CheckExitSide();
 		}
 	}
@@ -44,30 +44,30 @@ public class LevelBounds : MonoBehaviour
 		playerPosBot = new Vector3(playerTransform.position.x, playerTransform.position.y - playerColl.size.y/2, playerTransform.position.z);
 		playerPosTop = new Vector3(playerTransform.position.x, playerTransform.position.y + playerColl.size.y/2, playerTransform.position.z);
 		
-		Debug.Log("PlayerPosLeft: " + playerPosLeft);
-		Debug.Log("TriggerPosRight: " + triggerPosRight);
-		Debug.Log("PlayerPosRight: " + playerPosRight);
-		Debug.Log("TriggerPosLeft: " + triggerPosLeft);
+// 		Debug.Log("PlayerPosLeft: " + playerPosLeft);
+// 		Debug.Log("TriggerPosRight: " + triggerPosRight);
+// 		Debug.Log("PlayerPosRight: " + playerPosRight);
+// 		Debug.Log("TriggerPosLeft: " + triggerPosLeft);
 		
 		if(playerPosLeft.x > triggerPosRight.x)
 		{
-			Debug.Log("Off Right");
+// 			Debug.Log("Off Right");
 			playerTransform.position = playerCloneManager.GetClonePosition(3);
 		}
 		else if(playerPosRight.x < triggerPosLeft.x)
 		{
-			Debug.Log("Off Left");
+// 			Debug.Log("Off Left");
 			playerTransform.position = playerCloneManager.GetClonePosition(4);
 		}
 		
 		if(playerPosBot.y > triggerPosTop.y)
 		{
-			Debug.Log("Off Top");
+// 			Debug.Log("Off Top");
 			playerTransform.position = playerCloneManager.GetClonePosition(6);
 		}
 		else if(playerPosTop.y < triggerPosBot.y)
 		{
-			Debug.Log("Off Bottom");
+// 			Debug.Log("Off Bottom");
 			playerTransform.position = playerCloneManager.GetClonePosition(1);
 		}
 	}

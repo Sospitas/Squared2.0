@@ -8,7 +8,7 @@ public class GroundChecker : MonoBehaviour
 	private PlayerController playerController;
 	
 	void Awake()
-	{
+	{	
 		playerController = transform.parent.GetComponent<PlayerController>();
 	}
 	
@@ -24,7 +24,6 @@ public class GroundChecker : MonoBehaviour
 	
 	void OnTriggerExit2D(Collider2D other)
 	{
-		Debug.Log("Set Grounded False");
 		playerController.SetGrounded(false);
 	}
 }

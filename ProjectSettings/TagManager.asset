@@ -13,9 +13,9 @@ TagManager:
   - UI
   - 
   - 
-  - GroundCheck
   - Player
-  - 
+  - GroundCheck
+  - LevelTrigger
   - 
   - 
   - 

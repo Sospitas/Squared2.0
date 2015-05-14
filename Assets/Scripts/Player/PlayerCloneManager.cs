@@ -13,6 +13,7 @@ public class PlayerCloneManager : MonoBehaviour
 	
 	
 	private Transform playerTransf;
+	private Transform cloneParentTransf;
 	private GameObject[] playerClones;
 	
 	private float screenWidth;
@@ -24,6 +25,7 @@ public class PlayerCloneManager : MonoBehaviour
 		var cam = Camera.main;
 		
 		playerTransf = this.transform;
+		cloneParentTransf = playerTransf.Find("Clones").GetComponent<Transform>();
 		
 		var screenBottomLeft = cam.ViewportToWorldPoint(new Vector3(0, 0, playerTransf.position.z));
 		var screenTopRight = cam.ViewportToWorldPoint(new Vector3(1, 1, playerTransf.position.z));
@@ -41,6 +43,14 @@ public class PlayerCloneManager : MonoBehaviour
 		playerClones[5] = GameObject.Instantiate(clonePrefab, new Vector2(playerTransf.position.x - screenWidth, playerTransf.position.y - screenHeight), Quaternion.identity) as GameObject;
 		playerClones[6] = GameObject.Instantiate(clonePrefab, new Vector2(playerTransf.position.x, playerTransf.position.y - screenHeight), Quaternion.identity) as GameObject;
 		playerClones[7] = GameObject.Instantiate(clonePrefab, new Vector2(playerTransf.position.x + screenWidth, playerTransf.position.y - screenHeight), Quaternion.identity) as GameObject;
+		
+		if(cloneParentTransf)
+		{
+			for(int i = 0; i < 8; i++)
+			{
+				playerClones[i].transform.parent = cloneParentTransf;
+			}
+		}
 	}
 	
 	// Update is called once per frame
@@ -65,7 +75,7 @@ public class PlayerCloneManager : MonoBehaviour
 	{
 		if(index < 0 || index > 7)
 		{
-			Debug.Log("Incorrect index. Returning Vector2.Zero");
+// 			Debug.Log("Incorrect index. Returning Vector2.Zero");
 			return Vector2.zero;
 		}
 		

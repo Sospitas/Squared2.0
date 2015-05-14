@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &131920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 466384}
+  m_Layer: 8
+  m_Name: Clones
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &138470
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,9 +25,9 @@ GameObject:
   - 4: {fileID: 401720}
   - 61: {fileID: 6134048}
   - 114: {fileID: 11498942}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: GroundCheckBottom
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +45,7 @@ GameObject:
   - 61: {fileID: 6107778}
   - 50: {fileID: 5031962}
   - 114: {fileID: 11465114}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -47,9 +62,9 @@ GameObject:
   - 4: {fileID: 405896}
   - 61: {fileID: 6115970}
   - 114: {fileID: 11400492}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: GroundCheckTop
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,6 +93,7 @@ Transform:
   m_Children:
   - {fileID: 401720}
   - {fileID: 405896}
+  - {fileID: 466384}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &405896
@@ -92,6 +108,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 404744}
   m_RootOrder: 1
+--- !u!4 &466384
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131920}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 404744}
+  m_RootOrder: 2
 --- !u!50 &5031962
 Rigidbody2D:
   m_ObjectHideFlags: 1
@@ -114,7 +142,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175728}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: aa61090ed03a14dc98947c4810e8561b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}

@@ -6,14 +6,16 @@ public class PlayerController : MonoBehaviour
 	public float maxSpeed = 3f;
 	public float speedModifier = 50f;
 	public float jumpSpeed = 200f;
+	public float maxYVel = 20f;
+	public bool  isGrounded = false;
 	
-	public bool isGrounded = false;
-	
-	public bool flipGravity = false;
+	public bool  flipGravity = false;
 	
 	private Rigidbody2D rigidBody;
 	
 	private float velocityModifier = 0.0f;
+
+
 	
 	// Use this for initialization
 	void Awake ()
@@ -33,17 +35,19 @@ public class PlayerController : MonoBehaviour
 	}
 	
 	void FixedUpdate()
-	{
-// 		Debug.Log("IsGrounded? " + isGrounded);
-		
+	{		
 		if(flipGravity && isGrounded)
 		{
 			flipGravity = false;
 			Physics2D.gravity *= -1;
 		}
-		
-// 		rigidBody.AddForce((Vector2.right * speedModifier) * velocityModifier);
-		rigidBody.velocity = new Vector2(speedModifier * velocityModifier, rigidBody.velocity.y);
+	
+		if (rigidBody.velocity.y > maxYVel && rigidBody.velocity.y > 0) 
+			rigidBody.velocity = new Vector2 (speedModifier * velocityModifier, maxYVel);	
+		else if(rigidBody.velocity.y < -maxYVel && rigidBody.velocity.y < 0) 
+			rigidBody.velocity = new Vector2 (speedModifier * velocityModifier, -maxYVel);
+		else 
+			rigidBody.velocity = new Vector2 (speedModifier * velocityModifier, rigidBody.velocity.y);
 		
 		if(rigidBody.velocity.x > maxSpeed)
 			rigidBody.velocity = new Vector2(maxSpeed, rigidBody.velocity.y);
